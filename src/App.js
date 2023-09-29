@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Applet from './Applet';
+import { Routes, Route, Link } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
 const App = () => {
@@ -46,7 +48,9 @@ const App = () => {
           <>RESET</>
         </button>
       </div>
-
+      <Routes>
+        <Route path="/test" element={<Applet />} />
+      </Routes>
     </>
   );
 }

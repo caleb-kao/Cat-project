@@ -5,22 +5,22 @@ module.exports = {
     // entry: path.resolve(__dirname, 'src/index.js'),
     entry: {
         index: path.resolve(__dirname, 'src/index.js'),
-        signup: path.resolve(__dirname, 'client/signup.js'),
+        signup: path.resolve(__dirname, 'src/signup.js'),
     },
     output: {
         filename: "[name].bundle.js", // the file name would be my entry"s name with a ".bundle.js" suffix
-        path: path.resolve(__dirname, "dist") // put all of the build in a dist folder
+        path: path.resolve(__dirname, "dist"), // put all of the build in a dist folder
     },
     plugins: [
-        // new HtmlWebpackPlugin({
-        //     filemane: 'index.html',
-        //     template: "src/index.html",
-        //     chunks: ['index'],
-        //     inject: true
-        // }),
         new HtmlWebpackPlugin({
-            filemane: 'signup.html',
-            template: "client/signup.html",
+            filename: 'index.html',
+            template: "src/index.html",
+            chunks: ['index'],
+            inject: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'signup.html',
+            template: "src/signup.html",
             chunks: ['signup'],
             inject: true
         }),
@@ -54,6 +54,7 @@ module.exports = {
     },
 
     devServer: {
+        historyApiFallback: true,
         port: 8080, // you can change the port
     },
     // devServer: {
