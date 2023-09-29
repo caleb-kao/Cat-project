@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+}
+
+.container {
+    padding: 0 2.5%;
+    flex-direction: column;
+}
+
+.Box {
+    background-color: burlywood;
+}
+
+.CenterIt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Row {
+    display: flex;
+    flex-direction: column;
+}
