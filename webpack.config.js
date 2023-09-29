@@ -2,17 +2,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    // entry: {
-    //     main: path.resolve(__dirname, 'client/components/index.js')
-    //     // signup: path.resolve(__dirname, 'client/signup.js'),
-    // },
+    // entry: path.resolve(__dirname, 'src/index.js'),
+    entry: {
+        index: path.resolve(__dirname, 'src/index.js'),
+        signup: path.resolve(__dirname, 'client/signup.js'),
+    },
     output: {
-        path: path.join(__dirname, "/dist"), // the bundle output path
-        filename: "bundle.js", // the name of the bundle
+        filename: "[name].bundle.js", // the file name would be my entry"s name with a ".bundle.js" suffix
+        path: path.resolve(__dirname, "dist") // put all of the build in a dist folder
     },
     plugins: [
+        // new HtmlWebpackPlugin({
+        //     filemane: 'index.html',
+        //     template: "src/index.html",
+        //     chunks: ['index'],
+        //     inject: true
+        // }),
         new HtmlWebpackPlugin({
-            template: "src/index.html", // to import index.html file inside index.js
+            filemane: 'signup.html',
+            template: "client/signup.html",
+            chunks: ['signup'],
+            inject: true
         }),
     ],
     mode: process.env.NODE_ENV,
@@ -39,11 +49,10 @@ module.exports = {
             },
         ]
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.json']
+    },
 
-    // plugins: [
-    //     new HtmlWebpackPlugin({ filename: 'index.html', template: path.resolve(__dirname, 'client/components/index.html'), chunks: ['index'], inject: 'body' })
-    //     // new HtmlWebpackPlugin({ filename: 'signup.html', template: path.resolve(__dirname, 'client/signup.html'), chunks: ['signup'] })
-    // ],
     devServer: {
         port: 8080, // you can change the port
     },

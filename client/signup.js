@@ -1,12 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import App from './components/App.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import Applet from "./Applet";
+import "./Applet.scss";
 
-// uncomment so that webpack can bundle styles
-// import styles from './scss/application.scss';
-
-// React.render(<App />, document.getElementById('root'));
-ReactDOM.render(
-    <App />,
-    document.getElementById('sign')
-);
+ReactDOM.render(<Applet />, document.getElementById("signup"));
