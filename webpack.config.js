@@ -7,6 +7,7 @@ module.exports = {
         app: path.resolve(__dirname, 'src/launchApp.js'),
         market: path.resolve(__dirname, 'src/launchMarket.js'),
         login: path.resolve(__dirname, 'src/log.js'),
+        signup: path.resolve(__dirname, 'src/launchSign.js'),
     },
     output: {
         filename: "[name].bundle.js", // the file name would be my entry"s name with a ".bundle.js" suffix
@@ -30,6 +31,12 @@ module.exports = {
             filename: 'login.html',
             template: "src/login.html",
             chunks: ['login'],
+            inject: true
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'signup.html',
+            template: "src/signup.html",
+            chunks: ['signup'],
             inject: true
         }),
     ],

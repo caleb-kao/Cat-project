@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './login.scss';
+import Signup from './signup';
 import fatcat from '../assets/fatcat.gif'
 // import PropTypes from 'prop-types';
 
@@ -28,6 +29,11 @@ export default function Login({ setToken }) {
         setToken(token);
     }
 
+    function sign() {
+        // return <Signup setToken={setToken} />
+        return window.location.href = "signup.html"
+    }
+
     return (
         <div className="login-wrapper">
             <h1>Log In</h1>
@@ -43,6 +49,17 @@ export default function Login({ setToken }) {
                 <div>
                     <button type="submit">Submit</button>
                 </div>
+                <div>
+                    <button className="btn" onClick={sign}>Sign Up</button>
+                </div>
+                {/* <div style="width: 100%;">
+                    <div style={"width: 50%; height: 100px; float: left; background: green;"}>
+                        <button type="submit">Submit</button>
+                    </div>
+                    <div style={"margin-left: 50%; height: 100px; background: blue;"}>
+                        <button className="btn" onClick={sign} />
+                    </div>
+                </div> */}
             </form>
 
             <div className='cat'>
