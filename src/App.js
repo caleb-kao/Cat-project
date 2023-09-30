@@ -1,69 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import Applet from './Applet';
-import { Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import Login from './login';
+import greencat from '../assets/slotmachine.gif'
 import { createRoot } from 'react-dom/client';
 
+// function setToken(userToken) {
+// }
+
+// function getToken() {
+// }
+
+
 const App = () => {
+  const navigate = useNavigate()
+  const [token, setToken] = useState();
 
-  const [board, setBoard] = useState([['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]);
-  const [XorO, setXorO] = useState('O')
+  // const token = getToken();
 
-  function boxUpdate(row, column) {
-    let newBoard = [...board];
-    if (XorO === "X") setXorO("O");
-    else setXorO("X");
-    newBoard[row][column] = XorO;
-    setBoard(newBoard);
-  }
-
-  function clearBoard() {
-    setBoard([['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']])
-  }
-
-  const Row = () => {
-    let rowArray = [];
-    for (let x = 0; x < 3; x++) {
-      rowArray[x] = [];
-      for (let i = 0; i < 3; i++) {
-        let box = <Box text={board[x][i]} clickFunc={boxUpdate} key={i} row={x} column={i} />;
-        rowArray[x].push(box);
-      }
-    }
-
-    return (
-      <div class="CenterIt">
-        <div class="Row">{rowArray[0]}</div>
-        <div class="Row">{rowArray[1]}</div>
-        <div class="Row">{rowArray[2]}</div>
-      </div>)
+  if (!token) {
+    return <Login setToken={setToken} />
   }
 
   return (
-    <>
-      <h1 class="CenterIt">Tic Tac Toe</h1>
-      <label class="CenterIt">A Product by Caleb and Christopher</label>
-      <Row />
+    <div className="mainPage">
+      <h1>Try Again</h1>
       <div class="CenterIt">
-        <button onClick={clearBoard} style={{ height: "20px", width: "50px" }}>
-          <>RESET</>
+        <button className="btn" onClick={() => window.location.href = "signup.html"}>
+          Cat Shop
+        </button>
+        <button className="btn" onClick={() => window.location.href = "login.html"}>
+          Log Out
         </button>
       </div>
-      <Routes>
-        <Route path="/test" element={<Applet />} />
-      </Routes>
-    </>
+
+      <div className="center">
+        <img src={greencat} alt="test cat" />
+      </div>
+
+      {/* <Routes>
+        <Route path="/signup" element={<Applet />} />
+        <Route path="/login" element={<Login />} />
+      </Routes> */}
+    </div>
   );
 }
 
-const Box = (props) => {
-  return (
-    <>
-      <button onClick={() => props.clickFunc(props.row, props.column)} className="Box" style={{ color: "green", height: "100px", width: "100px" }}>
-        <h2>{props.text}</h2>
-      </button>
-    </>
-  )
-}
 
 export default App;
 

@@ -6,11 +6,13 @@ module.exports = {
     entry: {
         index: path.resolve(__dirname, 'src/index.js'),
         signup: path.resolve(__dirname, 'src/signup.js'),
+        login: path.resolve(__dirname, 'src/log.js'),
     },
     output: {
         filename: "[name].bundle.js", // the file name would be my entry"s name with a ".bundle.js" suffix
         path: path.resolve(__dirname, "dist"), // put all of the build in a dist folder
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
@@ -22,6 +24,12 @@ module.exports = {
             filename: 'signup.html',
             template: "src/signup.html",
             chunks: ['signup'],
+            inject: false
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'login.html',
+            template: "src/login.html",
+            chunks: ['login'],
             inject: true
         }),
     ],
@@ -31,21 +39,19 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: {
+                use: [{
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env', '@babel/preset-react']
-                    }
-                }
+                }]
             },
             {
                 test: /\.(sa|sc|c)ss$/, // styles files
                 use: ["style-loader", "css-loader", "sass-loader"],
             },
             {
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/, // to import images and fonts
-                loader: "url-loader",
-                options: { limit: false },
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                use: {
+                    loader: 'url-loader',
+                },
             },
         ]
     },
@@ -54,13 +60,16 @@ module.exports = {
     },
 
     devServer: {
-        historyApiFallback: true,
-        port: 8080, // you can change the port
+        // historyApiFallback: true,
+        port: 8080,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080',
+                router: () => 'http://localhost:3000',
+                logLevel: 'debug' /*optional*/
+            }
+        }
     },
-    // devServer: {
-    //     static: {
-    //         directory: path.join(__dirname, '/dist'),
-    //     },
-    // },
     devtool: 'eval-source-map',
+
 }

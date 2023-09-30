@@ -2,14 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from "./App";
-import "./App.scss";
+import Login from "./login";
+import "./login.scss";
 
-const root = createRoot(document.getElementById('app'));
+const root = createRoot(document.getElementById('login'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <App />
+            <Login />
         </BrowserRouter>
     </React.StrictMode>
 )
+
+
+

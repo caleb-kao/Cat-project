@@ -1,32 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const path = require('path');
 
-// uncomment the below for proxy challenge
-
-const leaderList = [
-  { name: 'Anna', id: 'a0' },
-  { name: 'Ben', id: 'b0' },
-  { name: 'Clara', id: 'c0' },
-  { name: 'David', id: 'd0' },
-];
-
-app.get('/signup', (req, res) => {
-  return res.sendFile(path.resolve(__dirname, '../client/signup.html'));
-});
-
-app.get('/api/leaders', (req, res) => {
-  return res.status(200).send(leaderList);
-});
+app.use(cors());
 
 
-// statically serve everything in the build folder on the route '/build'
-if (process.env.NODE_ENV === 'production') {
-  app.use('/build', express.static(path.join(__dirname, '../build')));
-  // serve index.html on the route '/'
-  app.get('/', (req, res) => {
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
   });
-}
-app.listen(3000); //listens on port 3000 -> http://localhost:3000/
+});
 
+app.listen(3000, () => console.log('API is running on http://localhost:3000/login'));

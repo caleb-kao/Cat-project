@@ -5,6 +5,7 @@ const Applet = () => {
   const navigate = useNavigate();
   return (
     <div className="container">
+      <h1>Second page</h1>
       <button className="btn" onClick={() => navigate(-1)}>
         Go Back
       </button>
