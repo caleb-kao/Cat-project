@@ -14,16 +14,10 @@ const Applet = () => {
       </div>
       <div className="about-container">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-          eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-          aliquid ratione facere enim eveniet modi necessitatibus quas
-          asperiores pariatur, amet velit?
+          This is currently a placeholder page. Eventually it will have a market where you can trade in your prizes in return for cats, which you can then place throughout your room. Just imagine there is a nice image of a room with lots of divs where you can place cats.
         </p>
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum
-          eos tenetur beatae nihil dolorum possimus voluptate esse voluptatibus,
-          aliquid ratione facere enim eveniet modi necessitatibus quas
-          asperiores pariatur, amet velit?
+          What, does this need a second paragraph?
         </p>
       </div>
     </div>
