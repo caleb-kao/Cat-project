@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Applet from './Applet';
+import Applet from './market';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './login';
 import greencat from '../assets/slotmachine.gif'
@@ -26,7 +26,7 @@ const App = () => {
     <div className="mainPage">
       <h1>Try Again</h1>
       <div class="CenterIt">
-        <button className="btn" onClick={() => window.location.href = "signup.html"}>
+        <button className="btn" onClick={() => window.location.href = "market.html"}>
           Cat Shop
         </button>
         <button className="btn" onClick={() => window.location.href = "login.html"}>

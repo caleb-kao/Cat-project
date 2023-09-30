@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     // entry: path.resolve(__dirname, 'src/index.js'),
     entry: {
-        index: path.resolve(__dirname, 'src/index.js'),
-        signup: path.resolve(__dirname, 'src/signup.js'),
+        app: path.resolve(__dirname, 'src/launchApp.js'),
+        market: path.resolve(__dirname, 'src/launchMarket.js'),
         login: path.resolve(__dirname, 'src/log.js'),
     },
     output: {
@@ -16,14 +16,14 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: "src/index.html",
-            chunks: ['index'],
+            template: "src/app.html",
+            chunks: ['app'],
             inject: true
         }),
         new HtmlWebpackPlugin({
-            filename: 'signup.html',
-            template: "src/signup.html",
-            chunks: ['signup'],
+            filename: 'market.html',
+            template: "src/market.html",
+            chunks: ['market'],
             inject: false
         }),
         new HtmlWebpackPlugin({
