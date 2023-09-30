@@ -2,24 +2,68 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import App from './App';
 
-const Applet = () => {
+const Applet = (props) => {
   const navigate = useNavigate();
+  const data = [
+    {
+      yarn: 3,
+      ball: 1,
+      mousetoy: 2,
+      feather: 3,
+      bell: 4,
+      bubblewrap: 5,
+      catnip: 6,
+      treats: 5,
+    }];
+
+
+  function logOut() {
+    sessionStorage.clear();
+    return window.location.href = "login.html"
+  };
+
   return (
-    <div className="container">
-      <h1>Second page</h1>
-      <button className="btn" onClick={() => navigate(-1)}>
-        Go Back
-      </button>
-      <div className="title">
-        <h1>About</h1>
+    <div className="mainPage">
+      <h1>Try Again</h1>
+      <div className="CenterIt">
+        <button className="bttn" onClick={() => window.location.href = "index.html"}> Back to Main </button>
+        <button className="bttn" onClick={logOut}> Log Out </button>
       </div>
-      <div className="about-container">
-        <p>
-          This is currently a placeholder page. Eventually it will have a market where you can trade in your prizes in return for cats, which you can then place throughout your room. Just imagine there is a nice image of a room with lots of divs where you can place cats.
-        </p>
-      </div>
+
+      <table>
+        <tr>
+          <th>Yarn</th>
+          <th>Ball</th>
+          <th>Mousetoy</th>
+          <th>Feather</th>
+          <th>Bell</th>
+          <th>Bubblewrap</th>
+          <th>Catnip</th>
+          <th>Treats</th>
+        </tr>
+        {data.map((val, key) => {
+          return (
+            <tr key={key}>
+              <td>{val.yarn}</td>
+              <td>{val.ball}</td>
+              <td>{val.mousetoy}</td>
+              <td>{val.feather}</td>
+              <td>{val.bell}</td>
+              <td>{val.bubblewrap}</td>
+              <td>{val.catnip}</td>
+              <td>{val.treats}</td>
+            </tr>
+          )
+        })}
+      </table>
+
+      {/* <Routes>
+        <Route path="/signup" element={<Applet />} />
+        <Route path="/login" element={<Login />} />
+      </Routes> */}
     </div>
   );
-};
+}
+
 
 export default Applet;

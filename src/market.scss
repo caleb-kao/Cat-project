@@ -1,13 +1,65 @@
-.container {
+h1 {
+  color: rgb(220, 170, 21);
+}
+
+body {
+  background-color: rgb(126, 179, 110);
+}
+
+.bttn {
+  // border: 5px solid;
+  // margin: auto;
+  // width: 50%;
+  // padding: 3px;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPage {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h1 {
-  color: rgb(22, 181, 107);
+.center {
+  padding: 30px;
+  margin: 30px;
 }
 
-body {
-  background-color: rgb(190, 171, 106);
+.prizes {
+  padding: 30px;
+  margin: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+table {
+  padding: 30px;
+  margin: 30px;
+  border: 10px solid rgb(6, 60, 6);
+  width: 800px;
+  height: 200px;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+td {
+  text-align: center;
+}
+
+.CenterIt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Row {
+  display: flex;
+  flex-direction: column;
 }

@@ -42,17 +42,17 @@ const App = () => {
       catnip: materials[6],
       treats: materials[7],
     },
-  ]
+  ];
   const { token, setToken } = useToken();
   // console.log(token)
   if (!token) {
     return <Login setToken={setToken} />
-  }
+  };
 
   function logOut() {
     sessionStorage.clear();
     return window.location.href = "login.html"
-  }
+  };
   const GifComponent = () => {
     const [gifVisible, setGifVisible] = useState(false);
 
